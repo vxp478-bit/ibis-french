@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercices : Pronoms Relatifs</title>
+<style>
+  body { font-family: 'Sansation', Arial, sans-serif; padding: 20px; line-height: 1.6; }
+  h1 { margin-bottom: 10px; }
+  h2 { margin-top: 30px; color: #2c3e50; }
+  label { display: block; margin: 10px 0 5px; }
+  select { padding: 5px; font-size: 16px; }
+  .filled { border: 2px solid #008000; } /* vert si rempli */
+  .empty { border: 2px solid #ff0000; } /* rouge si vide */
+  button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  #exercise1-summary, #exercise2-summary, #exercise3-summary {
+    font-weight: bold; margin-top: 20px;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<h1>Exercice 1 : Qui ou que ?</h1>
+<p>Choisissez <strong>qui</strong> ou <strong>que</strong> pour chaque phrase.</p>
+
+<form id="exercise1">
+  <label>1. Le chef 
+    <select>
+      <option value="">--</option>
+      <option value="qui">qui</option>
+      <option value="que">que</option>
+    </select> prépare les plats est très célèbre.
+  </label>
+  <label>2. La soupe 
+    <select>
+      <option value="">--</option>
+      <option value="qui">qui</option>
+      <option value="que">que</option>
+    </select> nous avons goûtée était délicieuse.
+  </label>
+  <!-- Ajoutez les autres phrases ici -->
+  <button type="button" onclick="checkAnswers('exercise1')">Vérifier</button>
+  <p id="exercise1-summary"></p>
+</form>
+
+<h2>Exercice 2 : Donner des définitions avec les pronoms relatifs</h2>
+<form id="exercise2">
+  <label>1. La ratatouille est un plat 
+    <select>
+      <option value="">--</option>
+      <option value="qui">qui</option>
+      <option value="ce qui">ce qui</option>
+      <option value="que">que</option>
+      <option value="ce que">ce que</option>
+    </select> contient des légumes.
+  </label>
+  <label>2. La mousseline est une sauce 
+    <select>
+      <option value="">--</option>
+      <option value="qui">qui</option>
+      <option value="ce qui">ce qui</option>
+      <option value="que">que</option>
+      <option value="ce que">ce que</option>
+    </select> accompagne souvent le poisson.
+  </label>
+  <!-- Ajoutez les autres phrases ici -->
+  <button type="button" onclick="checkAnswers('exercise2')">Vérifier</button>
+  <p id="exercise2-summary"></p>
+</form>
+
+<h2>Exercice 3 : Remplir les espaces vides (Paul Bocuse)</h2>
+<form id="exercise3">
+  <label>1. Paul Bocuse était un chef français célèbre 
+    <select>
+      <option value="">--</option>
+      <option value="qui">qui</option>
+      <option value="que">que</option>
+    </select> a révolutionné la gastronomie.
+  </label>
+  <label>2. Il dirigeait un restaurant à Lyon 
+    <select>
+      <option value="">--</option>
+      <option value="où">où</option>
+      <option value="que">que</option>
+      <option value="qui">qui</option>
+    </select> de nombreux jeunes chefs venaient apprendre.
+  </label>
+  <!-- Ajoutez les autres phrases ici -->
+  <button type="button" onclick="checkAnswers('exercise3')">Vérifier</button>
+  <p id="exercise3-summary"></p>
+</form>
+
+<script>
+function checkAnswers(formId) {
+  const form = document.getElementById(formId);
+  const selects = form.querySelectorAll("select");
+  let filledCount = 0;
+  let emptyCount = 0;
+
+  selects.forEach(select => {
+    if (select.value === "") {
+      select.classList.remove("filled");
+      select.classList.add("empty");
+      emptyCount++;
+    } else {
+      select.classList.remove("empty");
+      select.classList.add("filled");
+      filledCount++;
+    }
+  });
+
+  const summary = document.getElementById(`${formId}-summary`);
+  summary.textContent = `Champs remplis : ${filledCount}, champs vides : ${emptyCount}`;
+}
+</script>
+
+</body>
+</html>

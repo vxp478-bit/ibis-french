@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjonctif ou Indicatif</title>
+    <style>
+    body { font-family: 'Sansation', Arial, sans-serif; padding: 20px; line-height: 1.6; }
+    label { display: block; margin: 16px 0 8px; }
+    select { margin-left: 8px; }
+    input { width: 180px; margin-right: 10px; }
+    .correct { color: #008000; font-weight: bold; }
+    .incorrect { color: #ff0000; font-weight: bold; }
+    button { margin-top: 0; padding: 10px 20px; font-size: 16px; cursor: pointer; background: #2e7d32; color: #fff; border: none; border-radius: 4px; }
+    .form-actions { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 20px; }
+    .nav-buttons { display: flex; gap: 10px; }
+    .nav-button { display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; background: #e8f5e9; color: #2e7d32; border-radius: 4px; text-decoration: none; font-weight: 600; }
+    .nav-button:hover { background: #c8e6c9; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dongle:wght@300;400;700&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
+    <header class="site-header">
+        <div class="logo"><a href="../index.html"><span class="logo-ibis">ibis</span> <span class="logo-french">FRENCH</span></a></div>
+        <nav class="header-nav">
+            <a class="nav-item" href="#">à propos</a>
+            <a class="nav-item" href="#">F.A.Q</a>
+            <a class="nav-item" href="#">nous contacter</a>
+            <a class="nav-item" href="#">Université de Miami</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Exercice : Subjonctif ou Indicatif</h1>
+        <p>Complétez chaque phrase avec la forme correcte du verbe entre parenthèses.</p>
+    
+
+        <form id="exerciseForm">
+        <label>1. Je suis sûr qu’il (venir) 
+            <input type="text" data-answer="vient">
+            <span class="feedback"></span>
+        </label>
+
+        <label>2. Il faut que tu (faire) 
+            <input type="text" data-answer="fasses">
+            <span class="feedback"></span>
+        </label>
+
+        <label>3. Je crois qu’elle (comprendre) 
+            <input type="text" data-answer="comprend">
+            <span class="feedback"></span>
+        </label>
+
+        <label>4. Bien qu’il (pleuvoir) 
+            <input type="text" data-answer="pleuve">
+            <span class="feedback"></span>
+        </label>
+
+        <label>5. Il est évident que vous (être) 
+            <input type="text" data-answer="êtes">
+            <span class="feedback"></span>
+        </label>
+
+        <label>6. Il est possible que nous (avoir) 
+            <input type="text" data-answer="ayons">
+            <span class="feedback"></span>
+        </label>
+
+        <label>7. Je sais qu’ils (dire) 
+            <input type="text" data-answer="disent">
+            <span class="feedback"></span>
+        </label>
+
+        <label>8. Il est rare que cet élève (répondre) 
+            <input type="text" data-answer="réponde">
+            <span class="feedback"></span>
+        </label>
+
+        <label>9. Il me semble que tu (oublier) 
+            <input type="text" data-answer="oublies">
+            <span class="feedback"></span>
+        </label>
+
+        <label>10. Il est indispensable que vous (finir) 
+            <input type="text" data-answer="finissiez">
+            <span class="feedback"></span>
+        </label>
+
+        <div class="form-actions">
+          <button type="button" onclick="checkAnswers()">Vérifier</button>
+          <div class="nav-buttons">
+            <a class="nav-button" href="subjonctif-exercice1.html">Retour</a>
+            <a class="nav-button" href="subjonctif-exercice3.html">Suivant</a>
+          </div>
+        </div>
+        </form>
+
+        <script>
+        function checkAnswers() {
+        const inputs = document.querySelectorAll('#exerciseForm input');
+        inputs.forEach(input => {
+            const answer = input.dataset.answer.toLowerCase();
+            const feedback = input.nextElementSibling;
+            const userValue = input.value.trim().toLowerCase();
+            if(userValue === "") {
+            feedback.textContent = " ⚠ Veuillez remplir le champ";
+            feedback.className = "feedback incorrect";
+            } else if(userValue === answer) {
+            feedback.textContent = "✔ Correct";
+            feedback.className = "feedback correct";
+            } else {
+            feedback.textContent = `✖ Incorrect (Réponse: ${answer})`;
+            feedback.className = "feedback incorrect";
+            }
+        });
+        }
+        </script>
+    </main>
+</body>
+</html>

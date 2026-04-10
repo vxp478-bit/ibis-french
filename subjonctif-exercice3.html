@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice - Subjonctif</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    label { display: block; margin-bottom: 16px; line-height: 1.6; }
+    select { margin-left: 8px; }
+    input { width: 120px; margin: 5px; }
+    .correct { color: #008000; }
+    .incorrect { color: #ff0000; }
+    button { margin-top: 0; padding: 10px 20px; font-size: 16px; cursor: pointer; background: #2e7d32; color: #fff; border: none; border-radius: 4px; }
+    .form-actions { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 20px; }
+    .nav-buttons { display: flex; gap: 10px; }
+    .nav-button { display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; background: #e8f5e9; color: #2e7d32; border-radius: 4px; text-decoration: none; font-weight: 600; }
+    .nav-button:hover { background: #c8e6c9; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almendra+Display&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Dongle:wght@300;400;700&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+
+<body oncontextmenu="return false" oncopy="return false" oncut="return false" onpaste="return false">
+    <header class="site-header">
+        <div class="logo"><a href="../index.html"><span class="logo-ibis">ibis</span> <span class="logo-french">FRENCH</span></a></div>
+        <nav class="header-nav">
+          <a class="nav-item" href="#">à propos</a>
+          <a class="nav-item" href="#">F.A.Q</a>
+          <a class="nav-item" href="#">nous contacter</a>
+          <a class="nav-item" href="#">Université de Miami</a>
+        </nav>
+    </header>
+
+<h1>Exercice : Subjonctif ou Indicatif ?</h1>
+<p>Ces expressions sont suivies d’un verbe. Choisissez si ce verbe doit être au <strong>subjonctif (S)</strong> ou à l’<strong>indicatif (I)</strong>.</p>
+
+<form id="exerciseForm">
+  <label>1. Je suis contente que… 
+    <select data-answer="S">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>2. Il est probable que… 
+    <select data-answer="I">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>3. Il est possible que… 
+    <select data-answer="S">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>4. Je sais que… 
+    <select data-answer="I">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>5. Je doute que… 
+    <select data-answer="S">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>6. Je pense que… 
+    <select data-answer="I">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>7. Penses-tu que… ? 
+    <select data-answer="S">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>8. Je ne pense pas que… 
+    <select data-answer="S">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>9. J’espère que… 
+    <select data-answer="I">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <label>10. Je souhaite que… 
+    <select data-answer="S">
+      <option value="">--</option>
+      <option value="S">S</option>
+      <option value="I">I</option>
+    </select>
+    <span class="feedback"></span>
+  </label>
+
+  <div class="form-actions">
+    <button type="button" onclick="checkAnswers()">Vérifier</button>
+    <div class="nav-buttons">
+      <a class="nav-button" href="subjonctif-exercice2.html">Retour</a>
+    </div>
+  </div>
+</form>
+
+<script>
+function checkAnswers() {
+  const selects = document.querySelectorAll('#exerciseForm select');
+  selects.forEach(select => {
+    const answer = select.dataset.answer;
+    const feedback = select.nextElementSibling;
+    if(select.value === "") {
+      feedback.textContent = " ⚠ Choisissez S ou I";
+      feedback.className = "feedback incorrect";
+    } else if(select.value === answer) {
+      feedback.textContent = "✔ Correct";
+      feedback.className = "feedback correct";
+    } else {
+      feedback.textContent = "✖ Incorrect";
+      feedback.className = "feedback incorrect";
+    }
+  });
+}
+</script>
+</body>
+</html>
